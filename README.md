@@ -1,5 +1,8 @@
 # 💊 IDMP Mini Lab — CSV → RDF → SPARQL Pipeline
 
+[![CI](https://github.com/Mohsen-safi-Najafabadi/idmp-mini-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/Mohsen-safi-Najafabadi/idmp-mini-lab/actions)
+
+
 A compact demo project that transforms structured CSV data into RDF triples and runs SPARQL queries to extract useful insights.  
 This project mimics a simplified **IDMP (Identification of Medicinal Products)** data pipeline as used in EMA’s RMS/OMS framework.
 
@@ -27,3 +30,13 @@ Using `src/transform.py`, the CSV files are converted into RDF triples (Turtle f
 
 ```bash
 python src/transform.py
+<<<<<<< HEAD
+=======
+
+---
+
+## Provenance & License
+
+* The data sources are explained in **[PROVENANCE.md](PROVENANCE.md)** (EMA SPOR RMS + synthetic data).
+* Usage license: **MIT** — see **[LICENSE](LICENSE)**.
+>>>>>>> 971ba29 (docs: add PROVENANCE and MIT LICENSE; link from README)
