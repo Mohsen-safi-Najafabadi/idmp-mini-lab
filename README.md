@@ -1,46 +1,29 @@
-#Mohsen
+# 💊 IDMP Mini Lab — CSV → RDF → SPARQL Pipeline
 
-# IDMP Mini Lab (Demo)
+A compact demo project that transforms structured CSV data into RDF triples and runs SPARQL queries to extract useful insights.  
+This project mimics a simplified **IDMP (Identification of Medicinal Products)** data pipeline as used in EMA’s RMS/OMS framework.
 
-A tiny, reproducible demo that **turns CSVs & public code lists into a documented RDF graph**, runs a couple of **SPARQL** queries, and produces clean, reviewable outputs.
+---
 
-> Focus: routes of administration (subset from EMA RMS), substances, organizations, and products.
+## 📂 Project Overview
 
-## Why this stack?
-- **Python (pandas + rdflib)** – clean ETL + RDF generation with minimal dependencies.
-- **SPARQL** – show how the graph is queryable (lineage, lookups).
-- **CSV in /data + mapping note in /mappings** – reviewers can audit sources and transformations.
-- **Deterministic outputs in /outputs** – ideal for code reviews and POCs.
+### 🔹 Source Data
+The input data consists of simplified CSVs based on EMA’s *Referentials Management Service (RMS)* structure, including:
 
-## Sources (for the demo)
-- **Routes of Administration**: subset manually curated from EMA SPOR RMS terms (see`data/routes_of_administration.csv`).  
-- **Products/Substances/Organizations**: synthetic sample for demo purposes only (no PHI).
+| File | Description |
+|------|--------------|
+| `data/products.csv` | List of medicinal products with basic metadata |
+| `data/substances.csv` | Active substances and identifiers |
+| `data/routes_of_administration.csv` | Administration routes |
+| `data/organizations.csv` | Organization master data |
+| `mappings/products_mapping.yaml` | Defines how CSV columns are mapped to RDF predicates |
 
+---
 
+## 🔧 Pipeline Steps
 
-## Quickstart
+### 1️⃣ Transform CSV → RDF
+Using `src/transform.py`, the CSV files are converted into RDF triples (Turtle format).
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-
-# 1) Build the RDF graph (outputs/graph.ttl)
 python src/transform.py
-
-# 2) Run SPARQL queries (writes CSVs in outputs/query_results)
-python src/run_queries.py
-```
-
-
-## Repo layout
-```
-data/                         # source CSVs (routes from RMS subset + synthetic demo data)
-mappings/                     # human-readable mapping notes
-src/                          # Python ETL & SPARQL
-  transform.py                # CSV -> RDF (Turtle)
-  run_queries.py              # runs queries over the generated TTL
-  queries/*.rq                # SPARQL queries
-outputs/                      # generated files (ignored by git at first)
-```
-
