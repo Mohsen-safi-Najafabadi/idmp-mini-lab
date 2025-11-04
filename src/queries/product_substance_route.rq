@@ -1,0 +1,16 @@
+
+# Products -> Substances with route and org
+PREFIX ex: <https://example.org/idmp/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT ?product ?productLabel ?substance ?subLabel ?routeLabel ?orgLabel
+WHERE {
+  ?product a ex:MedicinalProduct ;
+           skos:prefLabel ?productLabel ;
+           ex:hasSubstance ?substance ;
+           ex:hasRoute ?route ;
+           ex:hasOrganization ?org .
+  ?substance skos:prefLabel ?subLabel .
+  ?route skos:prefLabel ?routeLabel .
+  ?org skos:prefLabel ?orgLabel .
+}
+ORDER BY ?productLabel

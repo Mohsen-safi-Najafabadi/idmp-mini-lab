@@ -1,0 +1,42 @@
+
+# Column-to-RDF mapping (demo)
+# Namespaces:
+#   ex:      https://example.org/idmp/
+#   rms:     https://spor.ema.europa.eu/rms#          (demo namespace for RMS terms)
+#   dct:     http://purl.org/dc/terms/
+#   foaf:    http://xmlns.com/foaf/0.1/
+#   schema:  https://schema.org/
+#   skos:    http://www.w3.org/2004/02/skos/core#
+
+products:
+  class: ex:MedicinalProduct
+  id: product_id
+  label: product_name
+  properties:
+    - [ex:hasRoute, data.routes_of_administration.identifier, iri, "rms:"]
+    - [ex:hasSubstance, data.substances.substance_id, iri, "ex:"]
+    - [ex:hasOrganization, data.organizations.org_id, iri, "ex:"]
+    - [dct:issued, authorization_date, xsd:date]
+
+substances:
+  class: ex:Substance
+  id: substance_id
+  label: preferred_term
+  altLabels: synonyms
+
+organizations:
+  class: ex:Organization
+  id: org_id
+  label: org_name
+  props:
+    - [ex:organizationType, org_type, xsd:string]
+    - [ex:country, country, xsd:string]
+    - [ex:lei, lei, xsd:string]
+
+routes_of_administration:
+  class: ex:RouteOfAdministration
+  id: identifier
+  label: term_name
+  props:
+    - [ex:status, status, xsd:string]
+    - [ex:sourceId, source_id, xsd:string]

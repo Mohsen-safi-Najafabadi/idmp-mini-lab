@@ -1,0 +1,11 @@
+
+# Synonym lookup for substances
+PREFIX ex: <https://example.org/idmp/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT ?substance ?pref ?alt
+WHERE {
+  ?substance a ex:Substance ;
+             skos:prefLabel ?pref ;
+             skos:altLabel ?alt .
+}
+ORDER BY ?pref ?alt

@@ -1,0 +1,4 @@
+product_id,product_name,route_code,substance_id,org_id,authorization_date
+P-1001,AcmePainReliefPatch,100000073637,S-2001,O-3001,2022-05-01
+P-1002,LumaUrethraGel,100000073638,S-2002,O-3002,2023-03-12
+P-1003,VitaTeatSolution,100000073635,S-2003,O-3001,2024-09-30
